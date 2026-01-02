@@ -405,7 +405,7 @@ const UserDashboard = () => {
           </p>
         </div>
 
-        {/* Create/Edit Post Form Card */}
+        {/* User Dashboard that requires login */}
         <div className="bg-[var(--surface-soft)] rounded-xl shadow-lg overflow-hidden mb-8 border border-gray-200">
           <div className="px-6 py-5 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
             <h2 className="text-2xl font-semibold text-gray-800">
