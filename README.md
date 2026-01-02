@@ -6,7 +6,7 @@
 
 <p align="center">
   
-![HomeVia Platform](./public/homevia-screenshot.png)
+![HomeVia Platform](./public/HomePage.jpg)
 
 </p>
 
