@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "../../assets/Ayala.jpg";
 import Imagee from "../../assets/Ayala1.jpg";
@@ -9,6 +9,9 @@ import Imageeeeee from "../../assets/Forbes2.jpg";
 import Imageeeeeee from "../../assets/Camella.jpg";
 import Imageeeeeeee from "../../assets/Camella1.jpg";
 import Imageeeeeeeee from "../../assets/Camella2.jpg";
+import Imageeeeeeeeee from "../../assets/CountryHomes.jpg";
+import Imageeeeeeeeeee from "../../assets/CountryHomes1.jpg";
+import Imageeeeeeeeeeee from "../../assets/CountryHomes2.jpg";
 
 
 const Features = () => {
@@ -71,16 +74,16 @@ const Features = () => {
       image: Imageeeeeee,
       title: "Camella Homes - Angeles City",
       specs: "2 bedroom | 1 bathroom | 800 sqft",
-      price: "₱3,000,000",
+      price: "₱5,000,000",
       images: [Imageeeeeee, Imageeeeeeee, Imageeeeeeeee],
     },
     {
       id: 4,
-      image: Imagee,
-      title: "Modern Luxury Condo",
-      specs: "Prime location with stunning city views",
-      price: "₱2,500,000",
-      images: [Imagee, Imageee, Imageeee],
+      image: Imageeeeeeeeee,
+      title: "Country Homes - Tagaytay City",
+      specs: "4 bedroom | 3 bathroom | 1200 sqft | 1 Pool",
+      price: "₱25,500,000",
+      images: [Imageeeeeeeeee, Imageeeeeeeeeee, Imageeeeeeeeeeee],
     },
     {
       id: 5,
