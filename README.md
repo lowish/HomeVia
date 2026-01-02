@@ -1,7 +1,7 @@
-<h1 align="center">🏠 HomeVia - Real Estate Platform</h1>
+<h1 align="center"> HomeVia</h1>
 
 <p align="center">
-  <strong>Modern Real Estate Management System</strong>
+  <strong>Real Estate Management System</strong>
 </p>
 
 <p align="center">
