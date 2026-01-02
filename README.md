@@ -14,7 +14,7 @@
 
 ## 📖 About
 
-HomeVia is a modern real estate platform built with React, Tailwind CSS, and Firebase. It showcases properties in the Philippines, helping users explore and discover their perfect place to live.
+HomeVia is a real estate platform built with React, Tailwind CSS, Framer Motion and Firebase. It showcases properties in the Philippines, helping users explore and discover their perfect place to live.
 
 ### ✨ Key Features
 
@@ -32,7 +32,7 @@ HomeVia is a modern real estate platform built with React, Tailwind CSS, and Fir
 
 ```bash
 # Clone the repository
-git clone https://github.com/lowish/My_Real_Estate.git
+git clone https://github.com/lowish/HomeVia.git
 cd My_Real_Estate
 
 # Install dependencies
@@ -83,16 +83,6 @@ My_Real_Estate/
 - Firebase security rules configured
 - Protected routes for authenticated users
 - User-specific data access only
-
----
-
-## 👨‍💻 Author
-
-**lowish**
-- GitHub: [@lowish](https://github.com/lowish)
-
-### Original Project
-Based on the original work by [Prince Tan](https://github.com/TheMostafax)
 
 ---
 
