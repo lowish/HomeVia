@@ -6,7 +6,7 @@
 
 <p align="center">
   
-![HomeVia Platform](https://github.com/user-attachments/assets/screenshot-homevia.png)
+![HomeVia Platform](./public/homevia-screenshot.png)
 
 </p>
 
