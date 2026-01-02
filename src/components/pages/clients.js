@@ -1,62 +1,98 @@
 import React from "react";
-import Client1 from "../../assets/client1.png";
-import Client4 from "../../assets/client4.png";
-import Client5 from "../../assets/client5.png";
+import { motion } from "framer-motion";
+import Client from "../../assets/Client.png";
 
 const OurClients = () => {
+  // Bidirectional animations for client testimonials
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
+  };
+
+  // Staggered card animations: pop up effect
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   return (
-    <div id="client" className="w-full min-h-screen p-2 flex items-center bg-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      id="client"
+      className="w-full min-h-screen items-start flex items-center bg-[var(--bg-soft)]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-100px" }} // Trigger on scroll down and up
+      variants={sectionVariants}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-3">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Clients</h2>
           <p className="text-lg text-gray-700 mb-8">
             See what our clients have to say about us.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
          
-        <div className="justify-center">
+        <motion.div
+          variants={cardVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-50px" }} // Trigger on scroll down and up
+          className="justify-center"
+        >
         <img
           className="w-24 h-24 object-cover rounded-full"
-          src={Client1}
+          src={Client}
           alt="Client 1"
         />
-        <div className="z-10 bg-white p-8 rounded-lg shadow-md">
+        <div className="z-10 bg-[var(--surface-soft)] p-8 rounded-lg shadow-md border border-gray-200">
           <p className="text-lg text-gray-700 mb-4">
-            "Working with this real estate agency was a great experience. Their team was knowledgeable and professional, and helped us find our dream home quickly and easily."
+            "As a homebuyer, I can browse verified listings, compare details, and book viewing appointments in a couple of clicks. Everything feels transparent and well-organized."
           </p>
           <p className="text-gray-500">Adam Johnson, Homebuyer</p>
         </div>
-      </div>
-      <div className="justify-center">
+      </motion.div>
+      <motion.div
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, margin: "-50px" }} // Trigger on scroll down and up
+        className="justify-center"
+      >
       <img
         className="w-24 h-24 object-cover rounded-full"
-        src={Client4}
+        src={Client}
         alt="Client 1"
       />
-      <div className="z-10 bg-white p-8 rounded-lg shadow-md">
+      <div className="z-10 bg-[var(--surface-soft)] p-8 rounded-lg shadow-md border border-gray-200">
         <p className="text-lg text-gray-700 mb-4">
-          "I was impressed with this agency's marketing strategy when we were selling our home. They really went above and beyond to showcase my home and attract potential buyers."
+          "As a home seller, posting my property was simple, and the dashboard keeps every inquiry in one place. Appointment requests land instantly so I can respond fast."
         </p>
         <p className="text-gray-500">Michael Smith, Home Seller</p>
       </div>
-    </div>
-    <div className="justify-center">
+    </motion.div>
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-50px" }} // Trigger on scroll down and up
+      className="justify-center"
+    >
     <img
       className="w-24 h-24 object-cover rounded-full"
-      src={Client5}
+      src={Client}
       alt="Client 1"
     />
-    <div className="z-10 bg-white p-8 rounded-lg shadow-md">
+    <div className="z-10 bg-[var(--surface-soft)] p-8 rounded-lg shadow-md border border-gray-200">
       <p className="text-lg text-gray-700 mb-4">
-        "I've been working with this agency for several years now for property management services, and they've been fantastic. They handle everything really well."
+        "Booking and confirming viewings is effortless, and reminders keep everyone on schedule. It’s the smoothest appointment experience I’ve had with real estate."
       </p>
-      <p className="text-gray-500">David Brown, Property Owner</p>
+      <p className="text-gray-500">David Brown, Buyer & Seller</p>
     </div>
+  </motion.div>
   </div>
   </div>
-  </div>
-</div>
+</motion.div>
   );
 };
 
