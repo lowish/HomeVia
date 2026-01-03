@@ -430,7 +430,9 @@ const UserDashboard = () => {
                 </button>
               </div>
             ) : (
+
             <form onSubmit={handleSubmit} className="space-y-5">
+
               {/* Title */}
               <div>
                 <label
@@ -448,7 +450,6 @@ const UserDashboard = () => {
                   className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors ${
                     errors.title ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="Property Title"
                 />
                 {errors.title && (
                   <p className="mt-1 text-sm text-red-600">{errors.title}</p>
@@ -472,7 +473,6 @@ const UserDashboard = () => {
                   className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors resize-none ${
                     errors.description ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="Describe the property"
                 />
                 {errors.description && (
                   <p className="mt-1 text-sm text-red-600">{errors.description}</p>
@@ -496,7 +496,6 @@ const UserDashboard = () => {
                   className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors ${
                     errors.location ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="Property address"
                 />
                 {errors.location && (
                   <p className="mt-1 text-sm text-red-600">{errors.location}</p>
@@ -514,7 +513,7 @@ const UserDashboard = () => {
                   </label>
                   <div className="relative">
                     <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-                      $
+                      ₱
                     </span>
                     <input
                       type="number"
@@ -524,7 +523,7 @@ const UserDashboard = () => {
                       onChange={handleChange}
                       min="0"
                       step="0.01"
-                      className={`w-full pl-8 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors ${
+                      className={`w-full pl-8 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors ₱{
                         errors.price ? "border-red-500" : "border-gray-300"
                       }`}
                       placeholder="0.00"
@@ -562,7 +561,7 @@ const UserDashboard = () => {
               {/* Image Upload */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Images <span className="text-gray-500 text-xs">(Optional, max 10)</span>
+                  Images <span className="text-gray-500 text-xs">(Optional, Max 5)</span>
                 </label>
                 <div
                   onDragOver={handleDragOver}

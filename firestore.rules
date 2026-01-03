@@ -13,10 +13,15 @@ service cloud.firestore {
       allow update, delete: if isSignedIn() && request.auth.uid == resource.data.userId;
     }
 
-    // Appointments: Users can only read/write their own appointments
+    // Appointments: Allow guest booking; authenticated users can still book and manage their own
     match /appointments/{appointmentId} {
+      // Authenticated users can read their own; guests cannot read (no auth)
       allow read: if isSignedIn() && request.auth.uid == resource.data.userId;
-      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+
+      // Create allowed for both guests and signed-in users. If signed in, userId must match auth uid; guests may omit userId.
+      allow create: if (!isSignedIn()) || (request.resource.data.userId == request.auth.uid);
+
+      // Updates/deletes remain restricted to the owner
       allow update, delete: if isSignedIn() && request.auth.uid == resource.data.userId;
     }
 

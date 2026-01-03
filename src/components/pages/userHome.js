@@ -52,13 +52,19 @@ const UserHome = () => {
     ) {
       setSubmitting(true);
       try {
-        // Create Firestore document under "appointments" with userId for filtering
-        await addDoc(collection(db, "appointments"), {
+        // Prepare payload; include userId only when signed in
+        const payload = {
           ...formData,
-          userId: auth?.currentUser?.uid || null,
           status: "pending",
           createdAt: serverTimestamp(),
-        });
+        };
+
+        if (auth?.currentUser?.uid) {
+          payload.userId = auth.currentUser.uid;
+        }
+
+        // Create Firestore document under "appointments"
+        await addDoc(collection(db, "appointments"), payload);
 
         // Clear form and show success message
         setFormData({
