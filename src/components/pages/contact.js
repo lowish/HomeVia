@@ -23,14 +23,15 @@ const ContactUs = () => {
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       )
       .then(
-        () => {
+        (result) => {
+          console.log("SUCCESS!", result.text);
           setStatus("Message sent successfully!");
           form.current.reset();
           setTimeout(() => setStatus(""), 3000);
         },
         (error) => {
+          console.error("FAILED...", error.text);
           setStatus("Failed to send message. Please try again.");
-          console.log("FAILED...", error.text);
         }
       );
   };
@@ -80,13 +81,13 @@ const ContactUs = () => {
           <div className="px-6 py-8">
             <form ref={form} onSubmit={sendEmail} className="grid grid-cols-1 gap-6">
               <div>
-                <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="from_name" className="block text-sm font-medium text-gray-700 mb-2">
                    Full Name
                 </label>
                 <input
                   type="text"
-                  name="user_name"
-                  id="user_name"
+                  name="from_name"
+                  id="from_name"
                   autoComplete="given-name"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                   required
@@ -94,12 +95,12 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="from_email" className="block text-sm font-medium text-gray-700 mb-2">
                   Email Address
                 </label>
                 <input
-                  id="user_email"
-                  name="user_email"
+                  id="from_email"
+                  name="from_email"
                   type="email"
                   autoComplete="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
