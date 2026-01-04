@@ -13,7 +13,7 @@ const ContactUs = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("Sent...");
 
     emailjs
       .sendForm(
@@ -24,14 +24,14 @@ const ContactUs = () => {
       )
       .then(
         (result) => {
-          console.log("SUCCESS!", result.text);
-          setStatus("Message sent successfully!");
+          console.log("Success", result.text);
+          setStatus("Message Sent");
           form.current.reset();
           setTimeout(() => setStatus(""), 3000);
         },
         (error) => {
-          console.error("FAILED...", error.text);
-          setStatus("Failed to send message. Please try again.");
+          console.error("Failed...", error.text);
+          setStatus("Failed to send message");
         }
       );
   };
@@ -63,7 +63,7 @@ const ContactUs = () => {
             Contact Us
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have questions about a house listing or need to adjust your viewing booking? Reach out and we’ll help right away.
+            Have questions about a post listing or selecting a booking? Reach out and we’ll help right away.
           </p>
         </div>
 
@@ -73,11 +73,7 @@ const ContactUs = () => {
           whileInView="visible"
           viewport={{ once: false, margin: "-50px" }} // Trigger on scroll down and up
           className="bg-[var(--surface-soft)] rounded-xl shadow-lg overflow-hidden border border-gray-200"
-        >
-          <div className="px-6 py-5 border-b border-gray-200">
-            <h3 className="text-2xl font-semibold text-gray-900">Send us a message</h3>
-          </div>
-
+        > 
           <div className="px-6 py-8">
             <form ref={form} onSubmit={sendEmail} className="grid grid-cols-1 gap-6">
               <div>
@@ -123,18 +119,18 @@ const ContactUs = () => {
               </div>
 
               {status && (
-                <div className={`p-3 rounded-lg text-center ${status.includes("success") ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                <div className={`p-3 rounded-lg text-center ${status === "Message Sent" ? "bg-green-100 text-green-700" : status === "Sent..." ? "bg-blue-100 text-blue-700" : "bg-red-100 text-red-700"}`}>
                   {status}
                 </div>
-              )}
+              )}  
 
               <div className="flex justify-end">
                 <button
                   type="submit"
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-150 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={status === "Sending..."}
+                  disabled={status === "Sent..."}
                 >
-                  {status === "Sending..." ? "Sending..." : "Send Message"}
+                  {status === "Sent..." ? "Sent..." : "Send Message"}
                 </button>
               </div>
             </form>
