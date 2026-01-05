@@ -167,7 +167,7 @@ const PostsList = () => {
                   
                   {post.price && (
                     <p className="text-2xl font-bold text-blue-600 mb-3">
-                      ${post.price.toLocaleString()}
+                      ₱{post.price.toLocaleString()}
                     </p>
                   )}
                   
