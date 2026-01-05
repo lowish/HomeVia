@@ -90,7 +90,7 @@ const Footer = () => {
 
               <div className="sm:justify-self-end">
                 <div className="flex flex-col mb-2">
-                    <p className="text-white text-sm">Developed by <a href="https://github.com/lowish" className="hover:text-gray-400">lowish</a></p>
+                    <p className="text-white text-sm">Developed by <a href="https://github.com/lowish" className="hover:text-gray-400">Prince Tan</a></p>
                 </div>   
                 <h3 className="text-white text-lg font-semibold mb-3">Connect with me</h3>
                 <div className="flex items-center gap-6 md:gap-7">
