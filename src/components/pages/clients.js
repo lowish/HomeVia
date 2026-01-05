@@ -49,7 +49,7 @@ const OurClients = () => {
           <p className="text-lg text-gray-700 mb-4">
             "As a homebuyer, I can browse verified listings, compare details, and book viewing appointments in a couple of clicks. Everything feels transparent and well-organized."
           </p>
-          <p className="text-gray-500">Adam Johnson, Homebuyer</p>
+          <p className="text-gray-500">Malit Iverson, Homebuyer</p>
         </div>
       </motion.div>
       <motion.div
@@ -68,7 +68,7 @@ const OurClients = () => {
         <p className="text-lg text-gray-700 mb-4">
           "As a home seller, posting my property was simple, and the dashboard keeps every inquiry in one place. Appointment requests land instantly so I can respond fast."
         </p>
-        <p className="text-gray-500">Michael Smith, Home Seller</p>
+        <p className="text-gray-500">Denise Lazaro, Home Seller</p>
       </div>
     </motion.div>
     <motion.div
