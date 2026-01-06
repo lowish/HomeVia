@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Link } from 'react-scroll';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 import '../index.css'
@@ -30,23 +29,22 @@ const Navbar = () => {
 
   // Handle hash changes when user clicks on scroll links
   const handleSectionClick = (sectionId) => {
-    // First update the hash
-    window.location.hash = `#${sectionId}`;
+    // Prevent default anchor behavior
+    const element = document.getElementById(sectionId);
+    if (!element) return;
     
-    // Small delay to let hash update, then scroll
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const navbarHeight = 70;
-        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementTop - navbarHeight;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 10);
+    // Update hash without jumping
+    history.pushState(null, null, `#${sectionId}`);
+    
+    // Calculate position with navbar offset
+    const navbarHeight = 90; // Extra padding for safety
+    const elementPosition = element.offsetTop - navbarHeight;
+    
+    // Scroll smoothly to the calculated position
+    window.scrollTo({
+      top: elementPosition,
+      behavior: 'smooth'
+    });
   };
 
   useEffect(() => {
