@@ -38,7 +38,6 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/userDashboard" element={<UserDashboard />} />
         <Route path="/publicListings" element={<PublicListings />} />
-        {/* Admin route removed; use login + dashboard for users */}
       </Routes>
       {!hideNavbarFooter && <Footer />}
     </div>
