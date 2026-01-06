@@ -28,6 +28,11 @@ const Navbar = () => {
     }
   };
 
+  // Handle hash changes when user clicks on scroll links
+  const handleSectionClick = (sectionId) => {
+    window.location.hash = sectionId;
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -63,7 +68,7 @@ const Navbar = () => {
     <>
       <div className={`fixed top-0 z-50 w-full h-[70px] flex justify-between items-center px-4 text-black ${isScrolled ? "bg-[var(--bg-soft)] shadow-sm" : "bg-transparent"} relative`}>
       <div className="text-4xl cursor-pointer inline-flex items-center text-blue-800 font-bold">
-        <Link to="home" smooth={true} duration={500}>
+        <Link to="home" smooth={true} duration={500} onSetInactive={() => handleSectionClick('home')}>
           HomeVia
         </Link>
       </div>
@@ -104,32 +109,32 @@ const Navbar = () => {
       </button>
       <ul className="hidden md:flex">
         <li>
-          <Link to="home" smooth={true} duration={500}>
+          <Link to="home" smooth={true} duration={500} onSetInactive={() => handleSectionClick('home')}>
             Home
           </Link>
         </li>
         <li>
-          <Link to="about" smooth={true} duration={500}>
+          <Link to="about" smooth={true} duration={500} onSetInactive={() => handleSectionClick('about')}>
             About Us
           </Link>
         </li>
         <li>
-          <Link to="feature" smooth={true} duration={500}>
+          <Link to="feature" smooth={true} duration={500} onSetInactive={() => handleSectionClick('feature')}>
             Our Features
           </Link>
         </li>
         <li>
-          <Link to="service" smooth={true} duration={500}>
+          <Link to="service" smooth={true} duration={500} onSetInactive={() => handleSectionClick('service')}>
             Learn More
           </Link>
         </li>
         <li>
-          <Link to="client" smooth={true} duration={500}>
+          <Link to="client" smooth={true} duration={500} onSetInactive={() => handleSectionClick('client')}>
             Reviews
           </Link>
         </li>
         <li>
-          <Link to="posts" smooth={true} duration={500}>
+          <Link to="posts" smooth={true} duration={500} onSetInactive={() => handleSectionClick('posts')}>
             Post Listing
           </Link>
         </li>
@@ -227,7 +232,10 @@ const Navbar = () => {
                   to="home" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('home');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Home
@@ -236,7 +244,10 @@ const Navbar = () => {
                   to="about" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('about');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   About Us
@@ -245,7 +256,10 @@ const Navbar = () => {
                   to="feature" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('feature');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Our Features
@@ -254,7 +268,10 @@ const Navbar = () => {
                   to="service" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('service');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Learn More
@@ -263,7 +280,10 @@ const Navbar = () => {
                   to="client" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('client');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Reviews
@@ -272,7 +292,10 @@ const Navbar = () => {
                   to="posts" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('posts');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Post Listing
@@ -312,7 +335,10 @@ const Navbar = () => {
                   to="home" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('home');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Home
@@ -321,7 +347,10 @@ const Navbar = () => {
                   to="about" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('about');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   About Us
@@ -330,7 +359,10 @@ const Navbar = () => {
                   to="feature" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('feature');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Our Features
@@ -339,7 +371,10 @@ const Navbar = () => {
                   to="service" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('service');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Learn More
@@ -348,7 +383,10 @@ const Navbar = () => {
                   to="client" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('client');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Reviews
@@ -357,7 +395,10 @@ const Navbar = () => {
                   to="posts" 
                   smooth={true} 
                   duration={500}
-                  onClick={() => setShowMenu(false)}
+                  onClick={() => {
+                    setShowMenu(false);
+                    handleSectionClick('posts');
+                  }}
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Post Listing
