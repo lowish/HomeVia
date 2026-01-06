@@ -166,7 +166,7 @@ const Navbar = () => {
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
                 <button
                   onClick={() => {
-                    navigate('/dashboard');
+                    navigate('/userDashboard');
                     setShowProfileDropdown(false);
                   }}
                   className="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100 flex items-center gap-2 transition-colors"
@@ -284,7 +284,7 @@ const Navbar = () => {
               {/* Dashboard and Logout */}
               <button
                 onClick={() => {
-                  navigate('/dashboard');
+                  navigate('/userDashboard');
                   setShowMenu(false);
                 }}
                 className="w-full py-3 px-4 text-left text-gray-700 hover:bg-gray-100 rounded-lg flex items-center gap-3 transition-colors mb-2"

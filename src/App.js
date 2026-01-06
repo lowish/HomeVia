@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import UserHome from "./components/pages/userHome";
@@ -16,8 +16,8 @@ import './index.css'
 function AppContent() {
   const location = useLocation();
   const isLoginRoute = location.pathname === "/login";
-  const isDashboardRoute = location.pathname === "/dashboard";
-  const isListingsRoute = location.pathname === "/listings";
+  const isDashboardRoute = location.pathname === "/userDashboard";
+  const isListingsRoute = location.pathname === "/publicListings";
   const hideNavbarFooter = isLoginRoute || isDashboardRoute || isListingsRoute;
 
   return (
@@ -36,8 +36,8 @@ function AppContent() {
           </>
         } />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<UserDashboard />} />
-        <Route path="/listings" element={<PublicListings />} />
+        <Route path="/userDashboard" element={<UserDashboard />} />
+        <Route path="/publicListings" element={<PublicListings />} />
         {/* Admin route removed; use login + dashboard for users */}
       </Routes>
       {!hideNavbarFooter && <Footer />}

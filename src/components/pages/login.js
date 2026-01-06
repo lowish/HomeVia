@@ -31,13 +31,13 @@ const Login = () => {
         }
         const cred = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
         await updateProfile(cred.user, { displayName: formData.displayName });
-        navigate("/dashboard");
+        navigate("/userDashboard");
       } else {
         if (!formData.email || !formData.password) {
           throw new Error("Please enter email and password.");
         }
         await signInWithEmailAndPassword(auth, formData.email, formData.password);
-        navigate("/dashboard");
+        navigate("/userDashboard");
       }
     } catch (err) {
       setError(err?.message || "Authentication failed.");
