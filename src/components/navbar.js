@@ -31,10 +31,15 @@ const Navbar = () => {
   // Handle hash changes when user clicks on scroll links
   const handleSectionClick = (sectionId) => {
     window.location.hash = `#${sectionId}`;
-    // Scroll to element smoothly
+    // Scroll to element smoothly with offset for navbar
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 70; // navbar height in pixels
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
