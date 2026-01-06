@@ -32,8 +32,8 @@ const Navbar = () => {
     const element = document.getElementById(sectionId);
     if (!element) return;
     
-    // Update the URL hash for HashRouter compatibility
-    window.location.hash = `#${sectionId}`;
+    // Update the URL hash for HashRouter compatibility (format: #!/#sectionId)
+    window.location.hash = `/#${sectionId}`;
     
     // Scroll to element using scrollIntoView (works with CSS scroll-margin-top)
     element.scrollIntoView({
@@ -75,11 +75,15 @@ const Navbar = () => {
 
   // Handle initial hash on page load
   useEffect(() => {
-    const hash = window.location.hash.replace(/^#/, '');
-    if (hash) {
+    // Extract section from HashRouter format: #!/#about -> about
+    const fullHash = window.location.hash;
+    const sectionMatch = fullHash.match(/#\/#(.+)$/);
+    
+    if (sectionMatch && sectionMatch[1]) {
+      const sectionId = sectionMatch[1];
       // Delay to ensure the page and all sections have fully rendered
       setTimeout(() => {
-        const element = document.getElementById(hash);
+        const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({
             behavior: 'smooth',
@@ -93,9 +97,11 @@ const Navbar = () => {
   // Handle browser back/forward button navigation
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace(/^#/, '');
-      if (hash) {
-        const element = document.getElementById(hash);
+      const fullHash = window.location.hash;
+      const sectionMatch = fullHash.match(/#\/#(.+)$/);
+      
+      if (sectionMatch && sectionMatch[1]) {
+        const element = document.getElementById(sectionMatch[1]);
         if (element) {
           element.scrollIntoView({
             behavior: 'smooth',
