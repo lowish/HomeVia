@@ -32,15 +32,17 @@ const Navbar = () => {
   const handleSectionClick = (sectionId) => {
     window.location.hash = `#${sectionId}`;
     // Scroll to element smoothly with offset for navbar
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const navbarHeight = 70; // navbar height in pixels
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
-    }
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 100; // navbar height in pixels + extra buffer
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 0);
   };
 
   useEffect(() => {

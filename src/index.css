@@ -19,7 +19,7 @@
     }
     /* Add scroll margin for sections to account for fixed navbar */
     #home, #about, #feature, #service, #client, #posts, #contact {
-        scroll-margin-top: 80px;
+        scroll-margin-top: 100px;
     }
 }
 
