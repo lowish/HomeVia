@@ -51,6 +51,7 @@ const ContactUs = () => {
     <motion.div
       id="contact"
       className="w-full min-h-screen bg-gradient-to-br from-[var(--bg-soft)] to-gray-200 py-16 px-4 sm:px-6 lg:px-8 flex items-center"
+      style={{ scrollMarginTop: '70px' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, margin: "-100px" }} // Trigger on scroll down and up

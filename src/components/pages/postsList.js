@@ -78,7 +78,7 @@ const PostsList = () => {
 
   return (
     // This section wraps for not posting a listing
-    <div id="posts" className="w-full min-h-screen bg-[var(--bg-soft)] py-16">
+    <div id="posts" className="w-full min-h-screen bg-[var(--bg-soft)] py-16" style={{ scrollMarginTop: '70px' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-blue-800 mb-4">

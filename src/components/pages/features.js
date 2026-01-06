@@ -132,6 +132,7 @@ const Features = () => {
     <motion.div
       id="feature"
       className="w-full min-h-screen p-2 flex items-center bg-gradient-to-b from-[var(--bg-surfacesoft)] to-gray-300"
+      style={{ scrollMarginTop: '70px' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, margin: "-100px" }} // Trigger on scroll down and up

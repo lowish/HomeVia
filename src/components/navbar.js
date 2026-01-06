@@ -29,21 +29,16 @@ const Navbar = () => {
 
   // Handle hash changes when user clicks on scroll links
   const handleSectionClick = (sectionId) => {
-    // Prevent default anchor behavior
     const element = document.getElementById(sectionId);
     if (!element) return;
     
-    // Update hash without jumping
-    history.pushState(null, null, `#${sectionId}`);
+    // Update the URL hash for HashRouter compatibility
+    window.location.hash = `#${sectionId}`;
     
-    // Calculate position with navbar offset
-    const navbarHeight = 90; // Extra padding for safety
-    const elementPosition = element.offsetTop - navbarHeight;
-    
-    // Scroll smoothly to the calculated position
-    window.scrollTo({
-      top: elementPosition,
-      behavior: 'smooth'
+    // Scroll to element using scrollIntoView (works with CSS scroll-margin-top)
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     });
   };
 
@@ -78,20 +73,52 @@ const Navbar = () => {
     };
   }, []);
 
+  // Handle initial hash on page load
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (hash) {
+      // Delay to ensure the page and all sections have fully rendered
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 300);
+    }
+  }, []);
+
+  // Handle browser back/forward button navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
     <>
       <div className={`fixed top-0 z-50 w-full h-[70px] flex justify-between items-center px-4 text-black ${isScrolled ? "bg-[var(--bg-soft)] shadow-sm" : "bg-transparent"} relative`}>
       <div className="text-4xl cursor-pointer inline-flex items-center text-blue-800 font-bold">
-        <a 
-          onClick={(e) => {
-            e.preventDefault();
-            handleSectionClick('home');
-          }}
-          href="#home"
-          className="text-blue-800 hover:text-blue-600 transition-colors no-underline"
+        <button 
+          onClick={() => handleSectionClick('home')}
+          className="text-blue-800 hover:text-blue-600 transition-colors no-underline bg-transparent border-0 cursor-pointer text-4xl font-bold"
         >
           HomeVia
-        </a>
+        </button>
       </div>
       <button
         type="button"
@@ -130,76 +157,52 @@ const Navbar = () => {
       </button>
       <ul className="hidden md:flex">
         <li>
-          <a 
-            onClick={(e) => {
-              e.preventDefault();
-              handleSectionClick('home');
-            }}
-            href="#home"
-            className="cursor-pointer hover:text-blue-600 transition-colors"
+          <button 
+            onClick={() => handleSectionClick('home')}
+            className="cursor-pointer hover:text-blue-600 transition-colors bg-transparent border-0"
           >
             Home
-          </a>
+          </button>
         </li>
         <li>
-          <a 
-            onClick={(e) => {
-              e.preventDefault();
-              handleSectionClick('about');
-            }}
-            href="#about"
-            className="cursor-pointer hover:text-blue-600 transition-colors"
+          <button 
+            onClick={() => handleSectionClick('about')}
+            className="cursor-pointer hover:text-blue-600 transition-colors bg-transparent border-0"
           >
             About Us
-          </a>
+          </button>
         </li>
         <li>
-          <a 
-            onClick={(e) => {
-              e.preventDefault();
-              handleSectionClick('feature');
-            }}
-            href="#feature"
-            className="cursor-pointer hover:text-blue-600 transition-colors"
+          <button 
+            onClick={() => handleSectionClick('feature')}
+            className="cursor-pointer hover:text-blue-600 transition-colors bg-transparent border-0"
           >
             Our Features
-          </a>
+          </button>
         </li>
         <li>
-          <a 
-            onClick={(e) => {
-              e.preventDefault();
-              handleSectionClick('service');
-            }}
-            href="#service"
-            className="cursor-pointer hover:text-blue-600 transition-colors"
+          <button 
+            onClick={() => handleSectionClick('service')}
+            className="cursor-pointer hover:text-blue-600 transition-colors bg-transparent border-0"
           >
             Learn More
-          </a>
+          </button>
         </li>
         <li>
-          <a 
-            onClick={(e) => {
-              e.preventDefault();
-              handleSectionClick('client');
-            }}
-            href="#client"
-            className="cursor-pointer hover:text-blue-600 transition-colors"
+          <button 
+            onClick={() => handleSectionClick('client')}
+            className="cursor-pointer hover:text-blue-600 transition-colors bg-transparent border-0"
           >
             Reviews
-          </a>
+          </button>
         </li>
         <li>
-          <a 
-            onClick={(e) => {
-              e.preventDefault();
-              handleSectionClick('posts');
-            }}
-            href="#posts"
-            className="cursor-pointer hover:text-blue-600 transition-colors"
+          <button 
+            onClick={() => handleSectionClick('posts')}
+            className="cursor-pointer hover:text-blue-600 transition-colors bg-transparent border-0"
           >
             Post Listing
-          </a>
+          </button>
         </li>
       
       </ul>
@@ -291,72 +294,60 @@ const Navbar = () => {
 
               {/* Mobile Navigation Links */}
               <div className="space-y-2 mb-3">
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('home');
                   }}
-                  href="#home"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Home
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('about');
                   }}
-                  href="#about"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   About Us
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('feature');
                   }}
-                  href="#feature"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Our Features
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('service');
                   }}
-                  href="#service"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Learn More
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('client');
                   }}
-                  href="#client"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Reviews
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('posts');
                   }}
-                  href="#posts"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Post Listing
-                </a>
+                </button>
               </div>
 
               <hr className="my-3 border-gray-200" />
@@ -388,72 +379,60 @@ const Navbar = () => {
             <>
               {/* Mobile Navigation Links for non-logged in users */}
               <div className="space-y-2 mb-3">
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('home');
                   }}
-                  href="#home"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Home
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('about');
                   }}
-                  href="#about"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   About Us
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('feature');
                   }}
-                  href="#feature"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Our Features
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('service');
                   }}
-                  href="#service"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Learn More
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('client');
                   }}
-                  href="#client"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Reviews
-                </a>
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
+                </button>
+                <button 
+                  onClick={() => {
                     setShowMenu(false);
                     handleSectionClick('posts');
                   }}
-                  href="#posts"
-                  className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
+                  className="block w-full text-left py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer bg-transparent border-0"
                 >
                   Post Listing
-                </a>
+                </button>
               </div>
 
               <hr className="my-3 border-gray-200" />

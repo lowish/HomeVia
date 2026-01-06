@@ -97,7 +97,7 @@ const UserHome = () => {
   return (
     <>
       {/* Hero Section */}
-      <div id="home" className="w-full min-h-screen p-8 flex items-center bg-surface-100">
+      <div id="home" className="w-full min-h-screen p-8 flex items-center bg-surface-100" style={{ scrollMarginTop: '70px' }}>
         <div className="max-w-7xl mx-auto md:flex md:flex-row-reverse md:items-center">
           <div className="md:w-1/2 md:pr-8 my-6 md:my-0 md:-mt-12">
             <img

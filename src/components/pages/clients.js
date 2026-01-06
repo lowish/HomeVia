@@ -19,6 +19,7 @@ const OurClients = () => {
     <motion.div
       id="client"
       className="w-full min-h-screen items-start flex items-center bg-[var(--bg-soft)]"
+      style={{ scrollMarginTop: '70px' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, margin: "-100px" }} // Trigger on scroll down and up

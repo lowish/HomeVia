@@ -26,6 +26,7 @@ const AboutUs = () => {
     <motion.section 
       id="about" 
       className="w-full py-16 md:py-20 bg-gray-50"
+      style={{ scrollMarginTop: '70px' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, margin: "-100px" }} // Trigger on scroll down and up
