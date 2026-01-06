@@ -31,18 +31,14 @@ const Navbar = () => {
   // Handle hash changes when user clicks on scroll links
   const handleSectionClick = (sectionId) => {
     window.location.hash = `#${sectionId}`;
-    // Scroll to element smoothly with offset for navbar
+    // Delay to ensure hash is updated
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        const navbarHeight = 100; // navbar height in pixels + extra buffer
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        });
+        // Use scrollIntoView with block: 'start' for better positioning
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }, 0);
+    }, 100);
   };
 
   useEffect(() => {
