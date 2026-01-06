@@ -12,19 +12,19 @@
 
 ---
 
-## 📖 About
+##   About
 
 HomeVia is a real estate platform built with React, Tailwind CSS, Framer Motion and Firebase. It showcases properties in the Philippines, helping users explore and discover their perfect place to live.
 
-### ✨ Key Features
+###  Features
 
-- 🔐 **Authentication** - Secure login and registration
-- 📝 **Property Management** - Create, edit, and delete listings
-- 🖼️ **Image Gallery** - Multi-image upload with viewer
-- 👤 **User Dashboard** - Personal property management
-- 🌐 **Public Listings** - Browse properties without login
-- 📱 **Responsive Design** - Works on all devices
-- 🔥 **Real-time Updates** - Live data with Firebase
+-  **Authentication** - Secure login and registration
+-  **Property Management** - Create, edit, and delete listings
+-  **Image Gallery** - Multi-image upload with viewer
+-  **User Dashboard** - Personal property management
+-  **Public Listings** - Browse properties without login
+-  **Responsive Design** - Works on all devices
+-  **Real-time Updates** - Live data with Firebase
 
 ---
 
@@ -51,7 +51,7 @@ npm run build
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Frontend:** React 18, Tailwind CSS, Framer Motion
 - **Backend:** Firebase (Auth, Firestore, Storage)
@@ -77,7 +77,7 @@ My_Real_Estate/
 
 ---
 
-## 🔒 Security
+##  Security
 
 - Environment variables are git-ignored (`.env`)
 - Firebase security rules configured
