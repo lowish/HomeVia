@@ -30,7 +30,12 @@ const Navbar = () => {
 
   // Handle hash changes when user clicks on scroll links
   const handleSectionClick = (sectionId) => {
-    window.location.hash = sectionId;
+    window.location.hash = `#${sectionId}`;
+    // Scroll to element smoothly
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {
@@ -68,9 +73,16 @@ const Navbar = () => {
     <>
       <div className={`fixed top-0 z-50 w-full h-[70px] flex justify-between items-center px-4 text-black ${isScrolled ? "bg-[var(--bg-soft)] shadow-sm" : "bg-transparent"} relative`}>
       <div className="text-4xl cursor-pointer inline-flex items-center text-blue-800 font-bold">
-        <Link to="home" smooth={true} duration={500} onSetInactive={() => handleSectionClick('home')}>
+        <a 
+          onClick={(e) => {
+            e.preventDefault();
+            handleSectionClick('home');
+          }}
+          href="#home"
+          className="text-blue-800 hover:text-blue-600 transition-colors no-underline"
+        >
           HomeVia
-        </Link>
+        </a>
       </div>
       <button
         type="button"
@@ -109,34 +121,76 @@ const Navbar = () => {
       </button>
       <ul className="hidden md:flex">
         <li>
-          <Link to="home" smooth={true} duration={500} onSetInactive={() => handleSectionClick('home')}>
+          <a 
+            onClick={(e) => {
+              e.preventDefault();
+              handleSectionClick('home');
+            }}
+            href="#home"
+            className="cursor-pointer hover:text-blue-600 transition-colors"
+          >
             Home
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="about" smooth={true} duration={500} onSetInactive={() => handleSectionClick('about')}>
+          <a 
+            onClick={(e) => {
+              e.preventDefault();
+              handleSectionClick('about');
+            }}
+            href="#about"
+            className="cursor-pointer hover:text-blue-600 transition-colors"
+          >
             About Us
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="feature" smooth={true} duration={500} onSetInactive={() => handleSectionClick('feature')}>
+          <a 
+            onClick={(e) => {
+              e.preventDefault();
+              handleSectionClick('feature');
+            }}
+            href="#feature"
+            className="cursor-pointer hover:text-blue-600 transition-colors"
+          >
             Our Features
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="service" smooth={true} duration={500} onSetInactive={() => handleSectionClick('service')}>
+          <a 
+            onClick={(e) => {
+              e.preventDefault();
+              handleSectionClick('service');
+            }}
+            href="#service"
+            className="cursor-pointer hover:text-blue-600 transition-colors"
+          >
             Learn More
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="client" smooth={true} duration={500} onSetInactive={() => handleSectionClick('client')}>
+          <a 
+            onClick={(e) => {
+              e.preventDefault();
+              handleSectionClick('client');
+            }}
+            href="#client"
+            className="cursor-pointer hover:text-blue-600 transition-colors"
+          >
             Reviews
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="posts" smooth={true} duration={500} onSetInactive={() => handleSectionClick('posts')}>
+          <a 
+            onClick={(e) => {
+              e.preventDefault();
+              handleSectionClick('posts');
+            }}
+            href="#posts"
+            className="cursor-pointer hover:text-blue-600 transition-colors"
+          >
             Post Listing
-          </Link>
+          </a>
         </li>
       
       </ul>
@@ -228,78 +282,72 @@ const Navbar = () => {
 
               {/* Mobile Navigation Links */}
               <div className="space-y-2 mb-3">
-                <Link 
-                  to="home" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('home');
                   }}
+                  href="#home"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Home
-                </Link>
-                <Link 
-                  to="about" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('about');
                   }}
+                  href="#about"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   About Us
-                </Link>
-                <Link 
-                  to="feature" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('feature');
                   }}
+                  href="#feature"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Our Features
-                </Link>
-                <Link 
-                  to="service" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('service');
                   }}
+                  href="#service"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Learn More
-                </Link>
-                <Link 
-                  to="client" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('client');
                   }}
+                  href="#client"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Reviews
-                </Link>
-                <Link 
-                  to="posts" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('posts');
                   }}
+                  href="#posts"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Post Listing
-                </Link>
+                </a>
               </div>
 
               <hr className="my-3 border-gray-200" />
@@ -331,78 +379,72 @@ const Navbar = () => {
             <>
               {/* Mobile Navigation Links for non-logged in users */}
               <div className="space-y-2 mb-3">
-                <Link 
-                  to="home" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('home');
                   }}
+                  href="#home"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Home
-                </Link>
-                <Link 
-                  to="about" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('about');
                   }}
+                  href="#about"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   About Us
-                </Link>
-                <Link 
-                  to="feature" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('feature');
                   }}
+                  href="#feature"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Our Features
-                </Link>
-                <Link 
-                  to="service" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('service');
                   }}
+                  href="#service"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Learn More
-                </Link>
-                <Link 
-                  to="client" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('client');
                   }}
+                  href="#client"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Reviews
-                </Link>
-                <Link 
-                  to="posts" 
-                  smooth={true} 
-                  duration={500}
-                  onClick={() => {
+                </a>
+                <a 
+                  onClick={(e) => {
+                    e.preventDefault();
                     setShowMenu(false);
                     handleSectionClick('posts');
                   }}
+                  href="#posts"
                   className="block py-2 text-gray-700 hover:text-blue-800 hover:bg-gray-50 rounded-md px-3 transition-colors cursor-pointer"
                 >
                   Post Listing
-                </Link>
+                </a>
               </div>
 
               <hr className="my-3 border-gray-200" />
