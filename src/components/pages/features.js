@@ -12,6 +12,12 @@ import Imageeeeeeeee from "../../assets/Camella2.jpg";
 import Imageeeeeeeeee from "../../assets/CountryHomes.jpg";
 import Imageeeeeeeeeee from "../../assets/CountryHomes1.jpg";
 import Imageeeeeeeeeeee from "../../assets/CountryHomes2.jpg";
+import Imageeeeeeeeeeeee from "../../assets/Angeles.jpg";
+import Imageeeeeeeeeeeeee from "../../assets/Angeles1.jpg";
+import Imageeeeeeeeeeeeeee from "../../assets/Angeles2.jpg";
+import Imageeeeeeeeeeeeeeee from "../../assets/Batangas.jpg";
+import Imageeeeeeeeeeeeeeeee from "../../assets/Batangas1.jpg";
+import Imageeeeeeeeeeeeeeeeee from "../../assets/Batangas2.jpg";
 
 
 const Features = () => {
@@ -66,7 +72,7 @@ const Features = () => {
       image: Imageeee,
       title: "Forbes Park - Makati City",
       specs: "4 bedroom | 3 bathroom | 1,500 sqft",
-      price: "₱20,000,000",
+      price: "₱20,5z00,000",
       images: [Imageeee, Imageeeee, Imageeeeee],
     },
     {
@@ -74,7 +80,7 @@ const Features = () => {
       image: Imageeeeeee,
       title: "Camella Homes - Angeles City",
       specs: "2 bedroom | 1 bathroom | 800 sqft",
-      price: "₱5,000,000",
+      price: "₱5,800,000",
       images: [Imageeeeeee, Imageeeeeeee, Imageeeeeeeee],
     },
     {
@@ -87,30 +93,24 @@ const Features = () => {
     },
     {
       id: 5,
-      image: Imageee,
-      title: "Beachfront Villa",
-      specs: "Exclusive waterfront property with private beach",
-      price: "₱5,000,000",
-      images: [Imageee, Imagee, Imageeee],
+      image: Imageeeeeeeeeeeee,
+      title: "Pampanga - Angeles City",
+      specs: "4 bedroom | 3 bathroom | 170 sqm",
+      price: "₱7,200,000",
+      images: [Imageeeeeeeeeeeee, Imageeeeeeeeeeeeee, Imageeeeeeeeeeeeeee],
     },
     {
       id: 6,
-      image: Imageeee,
-      title: "Suburban Family Home",
-      specs: "Spacious home perfect for families",
-      price: "₱1,800,000",
-      images: [Imageeee, Imagee, Imageee],
+      image: Imageeeeeeeeeeeeeeee,
+      title: "Phirst Park - Batangas City",
+      specs: "4 bedroom | 3 bathroom | 120 sqm",
+      price: "₱10,079,629",
+      images: [Imageeeeeeeeeeeeeeee, Imageeeeeeeeeeeeeeeee, Imageeeeeeeeeeeeeeeeee ],
     },
   ];
 
   const PropertyCard = ({ card }) => (
-    <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, margin: "-50px" }} // Trigger on scroll down and up
-      className='shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex-shrink-0 w-full md:w-auto'
-    >
+    <div className='shadow-md shadow-[#040c16] hover:scale-110 duration-500 flex-shrink-0 w-full md:w-auto'>
       <div className="bg-[var(--surface-soft)] rounded-lg shadow-lg border border-gray-200 h-full flex flex-col">
         <img src={card.image} alt={card.title} className="w-full h-48 md:h-64 object-cover rounded-t-lg" />
         <div className="py-6 px-4 flex-1 flex flex-col">
@@ -125,7 +125,7 @@ const Features = () => {
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 
   return (
